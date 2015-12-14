@@ -1,8 +1,0 @@
-package eu.davidfranco.TwitterBot;
-
-public class TwitterBot {
-	public static void main(String[] args){
-		UserProfile p = new UserProfile("Pollitoyeye");
-		System.out.println(p.getDisplayName());
-	}
-}

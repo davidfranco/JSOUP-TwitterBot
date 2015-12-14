@@ -8,9 +8,7 @@ public class TwitterBot {
 	public static EventManager emg = new EventManager();
 	public static void main(String[] args){
 		getEventManager().registerEvents(new ExampleEventListener());
-		mg.startSearchThread(10000, new String[]{"#earthquake"});
-		mg.startSearchThread(10000, new String[]{"#tsunami"});
-		mg.startSearchThread(10000, new String[]{"#storm"});
+		mg.startSearchThread(10000, new String[]{"rp","free","league"});
 	}
 	public static TwitterManager getManager(){
 		return mg;
