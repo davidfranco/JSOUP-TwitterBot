@@ -1,0 +1,7 @@
+package eu.davidfranco.TwitterBot;
+
+public class TwitterBot {
+	public static void Main(String[] args){
+		
+	}
+}

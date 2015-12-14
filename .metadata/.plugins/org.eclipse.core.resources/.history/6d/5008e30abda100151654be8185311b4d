@@ -1,0 +1,23 @@
+package eu.davidfranco.TwitterBot;
+
+import java.util.Calendar;
+
+public class Message {
+	private String content;
+	private long date;
+	public Message(String content, long date){
+		this.content = content;
+		this.date = date;
+	}
+	public String getContent(){
+		return content;
+	}
+	public long getDate(){
+		return date;
+	}
+	public String getParsedDate(){
+		Calendar c = Calendar.getInstance();
+		c.setTimeInMillis(date);
+		System.out.println(formatter.format(calendar.getTime())); 
+	}
+}

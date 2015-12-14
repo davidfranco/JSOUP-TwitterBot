@@ -1,0 +1,12 @@
+package eu.davidfranco.TwitterBot;
+
+public class SearchManager {
+	private String[] words;
+	private float latest;
+	public SearchManager(String[] words){
+		this.words = words;
+	}
+	public void search(){
+		
+	}
+}

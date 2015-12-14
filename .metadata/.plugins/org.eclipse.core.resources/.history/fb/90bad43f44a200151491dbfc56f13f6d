@@ -1,0 +1,20 @@
+package eu.davidfranco.TwitterBot;
+
+import eu.davidfranco.TwitterBot.events.TweetEvent;
+
+public class TwitterManager {
+	public TwitterManager(){
+	}
+	public void startSearchThread(String[] keyWords){
+		new Thread(new Runnable() {
+		    public void run() {
+		    	try {
+		    		SearchManager mn = new SearchManager(keyWords);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		    }
+		}).start();
+	}
+}

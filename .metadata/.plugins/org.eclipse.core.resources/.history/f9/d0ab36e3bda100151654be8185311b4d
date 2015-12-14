@@ -1,0 +1,41 @@
+package eu.davidfranco.TwitterBot;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.jsoup.Connection;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+public class UserProfile {
+	private Document doc;
+	public UserProfile(String username){
+		try {
+			Connection con = Jsoup.connect("https://twitter.com/" + username);
+			this.doc = con.get();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public UserProfile(String username, String loginAccount, String loginPassword){
+		
+	}
+	public List<Message> getMessages(){
+		ArrayList<Message> list = new ArrayList<Message>();
+		for(Element el : doc.select("div.content")){
+			Elements t = el.select("p.TweetTextSize.TweetTextSize--16px.js-tweet-text.tweet-text");
+			if(t.size() > 0){
+				String content = t.first().text();
+				long date = Long.parseLong(el.select("div.stream-item-header").select("small.time").select("a").select("span").attr("data-time-ms"));
+				Message m = new Message(content,date);
+				list.add(m);
+			}
+		}
+		return list;
+	}
+	public String getDisplayName(){
+		return doc.select("a.ProfileHeaderCard-nameLink.u-textInheritColor.js-nav").first().text();
+	}
+}

@@ -1,0 +1,12 @@
+package eu.davidfranco.TwitterBot;
+
+public class TwitterBot {
+	public static void main(String[] args){
+		UserProfile p = new UserProfile("_byOsta");
+		for(Tweet s : p.getTweets()){
+			System.out.println(s.getFormatedDate());
+			System.out.println(s.getContent()+ "\n\n");
+		}
+		
+	}
+}

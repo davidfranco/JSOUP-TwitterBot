@@ -1,0 +1,8 @@
+package eu.davidfranco.TwitterBot;
+
+public class Main {
+	public static void main(String[] args){
+		TwitterBot bot = new TwitterBot();
+		bot.getEventManager().registerEvents(getObject());
+	}
+}

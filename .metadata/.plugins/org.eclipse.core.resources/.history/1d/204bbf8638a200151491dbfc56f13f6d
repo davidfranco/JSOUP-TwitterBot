@@ -1,0 +1,18 @@
+package eu.davidfranco.TwitterBot;
+
+public class TwitterBot {
+	private static EventManager mg = new EventManager();
+	public static void main(String[] args){
+		TwitterManager.startSearchThread(new String[]{"juaniszombie"});
+		TwitterManager.startSearchThread(new String[]{"Pollitoyeye"});
+		TwitterManager.startSearchThread(new String[]{"_byOsta"});
+		TwitterManager.startSearchThread(new String[]{"Dinnerbone"});
+	}
+	public static EventManager getEventManager(){
+		return mg;
+	}
+	@EventHandler
+	public void onTweet(){
+		
+	}
+}

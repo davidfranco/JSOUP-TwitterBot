@@ -1,0 +1,19 @@
+package eu.davidfranco.TwitterBot;
+
+public class Message {
+	private String content;
+	private float date;
+	public Message(String content, float date){
+		this.content = content;
+		this.date = date;
+	}
+	public String getContent(){
+		return content;
+	}
+	public Float getDate(){
+		return date;
+	}
+	public String getParsedDate(){
+		
+	}
+}

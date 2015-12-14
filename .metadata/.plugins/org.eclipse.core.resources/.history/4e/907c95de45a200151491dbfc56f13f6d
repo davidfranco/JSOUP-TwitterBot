@@ -1,0 +1,30 @@
+package eu.davidfranco.TwitterBot;
+
+import java.io.IOException;
+
+import org.jsoup.Connection;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+
+public class SearchManager {
+	private String[] keyWords;
+	private float latest = 0;
+	public SearchManager(String[] keyWords){
+		this.keyWords = keyWords;
+	}
+	public void search(){
+		String searchQuery = "";
+		for(String toAdd : keyWords){
+			searchQuery += toAdd.replace("#", "%23") + "%20";
+		}
+		searchQuery = searchQuery.substring(0, searchQuery.length() - 3);
+		System.out.println(searchQuery);
+		Connection con = Jsoup.connect("https://twitter.com/search?f=tweets&vertical=default&q=" + searchQuery + "&src=typd");
+		try {
+			Document doc = con.get();
+			System.out.println(doc.title());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+}

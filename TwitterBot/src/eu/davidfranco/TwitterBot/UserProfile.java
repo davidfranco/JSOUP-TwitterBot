@@ -1,0 +1,50 @@
+package eu.davidfranco.TwitterBot;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.jsoup.Connection;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+public class UserProfile {
+	private Document doc;
+	private String username;
+	public UserProfile(String username){
+		this.username = username;
+		try {
+			Connection con = Jsoup.connect("https://twitter.com/" + username);
+			this.doc = con.get();
+		} catch (Exception e) {
+			System.out.println("Connection error...");
+		}
+	}
+	public UserProfile(String username, TwitterCredentials c){
+		
+	}
+	public List<Tweet> getTweets(){
+		ArrayList<Tweet> list = new ArrayList<Tweet>();
+		Elements c = doc.select("div.content");
+		if(c != null){
+			for(Element el : c){
+				Elements t = el.select("p.TweetTextSize.TweetTextSize--16px.js-tweet-text.tweet-text");
+				if(t.size() > 0){
+					String content = t.first().text();
+					long date = Long.parseLong(el.select("div.stream-item-header")
+							.select("small.time")
+							.select("a")
+							.select("span")
+							.attr("data-time-ms"));
+					Tweet m = new Tweet(content,date,username);
+					list.add(m);
+				}
+			}
+		}
+		return list;
+	}
+	public String getDisplayName(){
+		return doc.select("a.ProfileHeaderCard-nameLink.u-textInheritColor.js-nav").first().text();
+	}
+}

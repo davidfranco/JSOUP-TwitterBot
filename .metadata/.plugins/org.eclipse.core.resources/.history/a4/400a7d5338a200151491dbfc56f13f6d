@@ -1,0 +1,11 @@
+package eu.davidfranco.TwitterBot;
+
+public class EventManager {
+	
+	public void registerEvents(){
+		
+	}
+	public void callEvent(Event e){
+		
+	}
+}

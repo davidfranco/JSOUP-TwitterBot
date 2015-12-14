@@ -1,0 +1,33 @@
+package eu.davidfranco.TwitterBot;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.jsoup.Connection;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+
+public class UserProfile {
+	private Document doc;
+	public UserProfile(String username){
+		try {
+			Connection con = Jsoup.connect("https://twitter.com/" + username);
+			this.doc = con.get();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public UserProfile(String username, String loginAccount, String loginPassword){
+		
+	}
+	public List<Message> getMessages(){
+		ArrayList<Message> list = new ArrayList<Message>();
+		Element tl = doc.select("div.doc").first().select("div.page-outer").first().select("div.page-container").first().select("div.AppContainer").first().select("div.AppContent-main.content-main.u-cf").first().select("div.Grid.Grid--withGutter").first().select("div.Grid-cell.u-size2of3.u-lg-size3of4").first().select("div.Grid.Grid--withGutter").first().select("div.timeline").first();
+		if(tl == null){
+			System.out.println("Has Text");
+		}
+		return list;
+	}
+}

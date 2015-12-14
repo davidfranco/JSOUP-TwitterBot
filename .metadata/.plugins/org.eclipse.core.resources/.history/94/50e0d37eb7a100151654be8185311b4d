@@ -1,0 +1,30 @@
+package eu.davidfranco.TwitterBot;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.jsoup.Connection;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+
+public class UserProfile {
+	private Document doc;
+	public UserProfile(String username){
+		try {
+			Connection con = Jsoup.connect("https://twitter.com/" + username);
+			this.doc = con.get();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public UserProfile(String username, String loginAccount, String loginPassword){
+		
+	}
+	public List<Message> getMessages(){
+		ArrayList<Message> list = new ArrayList<Message>();
+		Element tl = doc.select("div.timeline").first();
+		return list;
+	}
+}

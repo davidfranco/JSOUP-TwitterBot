@@ -1,0 +1,12 @@
+package eu.davidfranco.TwitterBot;
+
+public class TwitterBot {
+	public static void Main(String[] args){
+		UserProfile p = new UserProfile("Pollitoyeye");
+		for(Message s : p.getMessages()){
+			System.out.println("Message date: " + s.getDate());
+			System.out.println("Message content: ");
+			System.out.println(s.getContent());
+		}
+	}
+}

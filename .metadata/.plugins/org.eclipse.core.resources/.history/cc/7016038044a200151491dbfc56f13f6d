@@ -1,0 +1,12 @@
+package eu.davidfranco.TwitterBot;
+
+public class SearchManager {
+	private String[] keyWords;
+	private float latest = 0;
+	public SearchManager(String[] keyWords){
+		this.keyWords = keyWords;
+	}
+	public void search(){
+		System.out.println("Searching " + keyWords[0]);
+	}
+}

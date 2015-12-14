@@ -1,0 +1,21 @@
+package eu.davidfranco.TwitterBot;
+
+import org.jsoup.Connection;
+import org.jsoup.Jsoup;
+
+public class SearchManager {
+	private String[] keyWords;
+	private float latest = 0;
+	public SearchManager(String[] keyWords){
+		this.keyWords = keyWords;
+	}
+	public void search(){
+		String searchQuery = "";
+		for(String toAdd : keyWords){
+			searchQuery += toAdd + "%20";
+		}
+		searchQuery = searchQuery.substring(0, searchQuery.length() - 4);
+		System.out.println(searchQuery);
+		Connection con = Jsoup.connect("https://twitter.com/search?q=" + searchQuery +"&src=typd");
+	}
+}

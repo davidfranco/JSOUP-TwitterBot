@@ -1,0 +1,15 @@
+package eu.davidfranco.TwitterBot;
+
+public class TwitterBot {
+	private static EventManager mg = new EventManager();
+	public static void main(String[] args){
+		
+	}
+	public static EventManager getEventManager(){
+		return mg;
+	}
+	@EventHandler
+	public void onTweet(){
+		
+	}
+}
